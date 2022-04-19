@@ -1,0 +1,7 @@
+﻿@model string
+@{
+    var data = @Model;
+}
+<label asp-for="@Model"></label>
+<input asp-for="@Model" /> <br />
+<span asp-validation-for="@Model" class="text-danger"></span>

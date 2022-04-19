@@ -1,0 +1,31 @@
+﻿@page
+@model RazorEditTemplate.Pages.EditPersonModel
+<form method="post">
+   <div class="form-group">
+      <label asp-for="Person.Age" class="control-label"></label>
+      <input asp-for="Person.Age" class="form-control" />
+      <span asp-validation-for="Person.Age" class="text-danger"></span>
+   </div>
+   <div class="form-group">
+      <label asp-for="Person.Name" class="control-label"></label>
+      <input asp-for="Person.Name" class="form-control" />
+      <span asp-validation-for="Person.Name" class="text-danger"></span>
+   </div>
+      <div class="form-group">
+      <label asp-for="Person.Colors" class="control-label"></label><br />
+        @for (int i = 0; i < Model.Person.Colors.Count(); i++)
+        {
+            <tr>
+                @Html.EditorFor(model => Model.Person.Colors[i])
+            </tr>
+        } 
+      <span asp-validation-for="Person.Colors" class="text-danger"></span>
+   </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
+ 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
